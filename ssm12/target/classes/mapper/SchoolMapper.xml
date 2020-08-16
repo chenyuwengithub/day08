@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.SchoolMapper">
+  <select id="findList" parameterType="SchoolVo" resultType="SchoolVo">
+  select s.*,a.areaname as aname from school s,area a where s.areaid = a.id
+  <if test="pream!=null and pream!=''">
+  and (s.schoolname like '%${pream}%' or s.phone like '%${pream}%' or s.address like '%${pream}%')
+  </if>
+  </select>
+</mapper>
